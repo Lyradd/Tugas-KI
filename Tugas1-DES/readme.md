@@ -2,12 +2,13 @@
 
 -   **Nama:** Made Daryl Adi Nugraha
 -   **NRP:** 5025221008
+-   **Kelas:** Keamanan Informasi (C)
 
 ---
 
 ## Deskripsi Proyek
 
-Proyek ini adalah sebuah implementasi sederhana dari algoritma kriptografi **Data Encryption Standard (DES)** menggunakan bahasa pemrograman Python. Program ini dirancang untuk tujuan edukasi, dengan menampilkan setiap langkah proses secara detail, mulai dari pembuatan subkunci (*key generation*) hingga proses enkripsi dan dekripsi blok data 64-bit.
+Proyek ini adalah sebuah implementasi sederhana dari algoritma kriptografi **Data Encryption Standard (DES)** menggunakan bahasa pemrograman Python. Program ini menampilkan langkah proses secara detail dan urut, mulai dari pembuatan subkunci (*key generation*) hingga proses enkripsi dan dekripsi blok data 64-bit.
 
 ---
 
@@ -26,10 +27,10 @@ Proyek ini adalah sebuah implementasi sederhana dari algoritma kriptografi **Dat
 ## Cara Penggunaan
 
 1.  Pastikan Anda telah menginstal Python di komputer Anda.
-2.  Simpan kode di atas sebagai file Python (contoh: `des_manual.py`).
+2.  Simpan kode di atas sebagai file Python (contoh: `DES.py`).
 3.  Jalankan program melalui terminal atau *command prompt*:
     ```bash
-    python des_manual.py
+    python DES.py
     ```
 4.  Ikuti instruksi yang muncul di layar untuk memasukkan **Plaintext** dan **Kunci**, masing-masing dalam 16 karakter heksadesimal.
     -   Contoh Plaintext: `0123456789ABCDEF`
