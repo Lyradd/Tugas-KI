@@ -1,7 +1,5 @@
 # Implementasi Algoritma DES (Data Encryption Standard)
 
-## Informasi Penulis
-
 -   **Nama:** Made Daryl Adi Nugraha
 -   **NRP:** 5025221008
 
