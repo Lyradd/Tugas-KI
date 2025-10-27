@@ -89,11 +89,11 @@ class DES_Cipher:
 
     # --- 3. Fungsi Internal (Private Methods) ---
     def _apply_permutation(self, binary_str, table):
-        """Fungsi 'permute' dari kode asli."""
+        """Fungsi 'permute'"""
         return "".join([binary_str[i - 1] for i in table])
 
     def _left_shift(self, binary_str, count):
-        """Fungsi 'shift_left' dari kode asli."""
+        """Fungsi 'shift_left'"""
         return binary_str[count:] + binary_str[:count]
 
     def _xor_binary_strings(self, s1, s2):
@@ -124,7 +124,7 @@ class DES_Cipher:
         return self._apply_permutation(sbox_output_str, self.PERMUTATION_P)
 
     def _create_key_schedule(self, key_64bit_str):
-        """Fungsi 'generate_keys' dari kode asli."""
+        """Fungsi 'generate_keys'"""
         key_56bit = self._apply_permutation(key_64bit_str, self.PC1_TABLE)
         
         left_key = key_56bit[0:28]
@@ -143,19 +143,19 @@ class DES_Cipher:
 
     # --- 4. Fungsi Konversi (Helper) ---
     def _text_to_binary_str(self, text):
-        """Fungsi 'string_to_binary' dari kode asli."""
+        """Fungsi 'string_to_binary'"""
         return "".join(format(ord(char), '08b') for char in text)
 
     def _binary_str_to_hex(self, binary_str):
-        """Fungsi 'binary_to_hex' dari kode asli."""
+        """Fungsi 'binary_to_hex'"""
         return hex(int(binary_str, 2))[2:].upper().zfill(16)
         
     def _hex_to_binary_str(self, hex_str):
-        """Fungsi 'hex_to_binary' dari kode asli."""
+        """Fungsi 'hex_to_binary'"""
         return bin(int(hex_str, 16))[2:].zfill(64)
         
     def _binary_str_to_text(self, binary_str):
-        """Fungsi 'binary_to_string' dari kode asli."""
+        """Fungsi 'binary_to_string'"""
         text = ""
         for i in range(0, len(binary_str), 8):
             byte = binary_str[i:i+8]
@@ -164,7 +164,7 @@ class DES_Cipher:
 
     # --- 5. Fungsi Publik (Public Methods) ---
     def encrypt_block(self, plaintext_block):
-        """Fungsi 'encrypt' dari kode asli, tapi untuk 1 blok 8-byte."""
+        """Fungsi 'encrypt', tapi untuk 1 blok 8-byte."""
         binary_data = self._text_to_binary_str(plaintext_block)
         binary_data = self._apply_permutation(binary_data, self.INITIAL_PERMUTATION)
         
@@ -189,7 +189,7 @@ class DES_Cipher:
         return self._binary_str_to_hex(cipher_binary)
 
     def decrypt_block(self, hex_ciphertext_block):
-        """Fungsi 'decrypt' dari kode asli, tapi untuk 1 blok 16-hex."""
+        """Fungsi 'decrypt', tapi untuk 1 blok 16-hex."""
         binary_data = self._hex_to_binary_str(hex_ciphertext_block)
         binary_data = self._apply_permutation(binary_data, self.INITIAL_PERMUTATION)
         
@@ -229,9 +229,9 @@ def remove_padding(text_data):
         return text_data # Bukan padding yang valid
     return text_data[:-padding_len]
 
-# --- Logika Utama Socket Server (Refactored) ---
+# --- Logika Utama Socket Server ---
 def run_chat_server():
-    HOST_ADDRESS = 'localhost'  
+    HOST_ADDRESS = '0.0.0.0'  
     PORT_NUMBER = 5001
     SECRET_KEY_HEX = "AABB09182736CCDD" 
     
@@ -247,7 +247,7 @@ def run_chat_server():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
         server_socket.bind((HOST_ADDRESS, PORT_NUMBER))
         server_socket.listen(1)
-        print(f"Chat Server (Refactored) listening on {HOST_ADDRESS}:{PORT_NUMBER}...")
+        print(f"Chat Server listening on {HOST_ADDRESS}:{PORT_NUMBER}...")
         
         # Terima koneksi
         conn, addr = server_socket.accept()
