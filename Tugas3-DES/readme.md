@@ -73,7 +73,8 @@ Berikut adalah langkah-langkah untuk menjalankan aplikasi ini:
 a. Pastikan keempat file (`DES.py`, `RSA.py`, `server.py`, `client.py`) berada di dalam folder yang sama.
 
 b. Buka terminal Anda dan instal *library* `cryptography` yang diperlukan oleh `RSA.py`:
-    ```bash
+
+    ```
     pip install cryptography
     ```
 
@@ -84,7 +85,8 @@ a. Buka **Terminal 1** (atau Command Prompt).
 b. Arahkan ke folder tempat Anda menyimpan file-file proyek.
 
 c. Jalankan `server.py`:
-    ```bash
+
+    ```
     python server.py
     ```
 
@@ -98,7 +100,7 @@ b. Arahkan ke folder yang **sama**.
 
 c. Jalankan `client.py`:
 
-    ```bash
+    ```
     python client.py
     ```
 
