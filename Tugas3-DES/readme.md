@@ -117,7 +117,11 @@ d. Untuk berhenti, ketik `stop` di salah satu terminal.
 
 ## 📂 Struktur Proyek
 ├── DES.py             # Modul enkripsi simetris DES
+
 ├── RSA.py             # Modul helper enkripsi asimetris RSA
+
 ├── server.py          # Skrip utama Server
+
 ├── client.py          # Skrip utama Client
+
 └── README.md          # Dokumentasi ini
