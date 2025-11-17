@@ -71,6 +71,7 @@ Berikut adalah langkah-langkah untuk menjalankan aplikasi ini:
 ### 1. Persiapan Awal (Hanya sekali)
 
 a. Pastikan keempat file (`DES.py`, `RSA.py`, `server.py`, `client.py`) berada di dalam folder yang sama.
+
 b. Buka terminal Anda dan instal *library* `cryptography` yang diperlukan oleh `RSA.py`:
     ```bash
     pip install cryptography
@@ -79,26 +80,44 @@ b. Buka terminal Anda dan instal *library* `cryptography` yang diperlukan oleh `
 ### 2. Jalankan Server
 
 a. Buka **Terminal 1** (atau Command Prompt).
+
 b. Arahkan ke folder tempat Anda menyimpan file-file proyek.
+
 c. Jalankan `server.py`:
     ```bash
     python server.py
     ```
+
 d. Server akan berjalan dan menampilkan `Chat Server listening on 0.0.0.0:5001...`. Server akan diam dan menunggu koneksi.
 
 ### 3. Jalankan Klien
 
 a. Buka **Terminal 2** (biarkan Terminal 1 tetap berjalan).
+
 b. Arahkan ke folder yang **sama**.
+
 c. Jalankan `client.py`:
+
     ```bash
     python client.py
     ```
+
 d. Klien akan otomatis terhubung, melakukan pertukaran kunci, dan menampilkan `--- Sesi Chat Dimulai ---`. Ia akan menunggu pesan pertama dari server.
 
 ### 4. Mulai Percakapan
 
 a. Kembali ke **Terminal 1 (Server)**. Masukkan pesan pertama Anda di prompt `Server: ` dan tekan Enter.
+
 b. Pindah ke **Terminal 2 (Klien)**. Anda akan melihat pesan dari server. Masukkan balasan Anda di prompt `Client: ` dan tekan Enter.
+
 c. Percakapan akan berlanjut bolak-balik.
+
 d. Untuk berhenti, ketik `stop` di salah satu terminal.
+
+
+## 📂 Struktur Proyek
+├── DES.py             # Modul enkripsi simetris DES
+├── RSA.py             # Modul helper enkripsi asimetris RSA
+├── server.py          # Skrip utama Server
+├── client.py          # Skrip utama Client
+└── README.md          # Dokumentasi ini
