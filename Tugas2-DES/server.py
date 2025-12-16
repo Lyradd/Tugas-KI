@@ -253,39 +253,42 @@ def run_chat_server():
         conn, addr = server_socket.accept()
         with conn:
             print(f"Connection established with {addr}")
-            try:
-                # --- Sesi Kirim Pesan Pertama ---
-                message_to_send = input("Masukkan pesan untuk dikirim: ")
-                padded_message = add_padding(message_to_send)
-                
-                encrypted_hex_output = ""
-                # Enkripsi per blok 8-byte
-                for i in range(0, len(padded_message), 8):
-                    block = padded_message[i:i+8]
-                    encrypted_hex_output += cipher.encrypt_block(block)
-                    
-                print(f"Mengirim data terenkripsi: {encrypted_hex_output}")
-                conn.sendall(encrypted_hex_output.encode('utf-8'))
-                
-                # --- Sesi Terima Balasan ---
-                encrypted_response = conn.recv(1024).decode('utf-8')
-                if not encrypted_response:
-                    raise ConnectionError("Client disconnected.")
-                    
-                print(f"Menerima data terenkripsi: {encrypted_response}")
-                
-                decrypted_response_padded = ""
-                # Dekripsi per blok 16-hex
-                for i in range(0, len(encrypted_response), 16):
-                    hex_block = encrypted_response[i:i+16]
-                    decrypted_response_padded += cipher.decrypt_block(hex_block)
-                    
-                # Hapus padding
-                final_response = remove_padding(decrypted_response_padded)
-                print(f"Hasil Dekripsi: {final_response}")
-                
-            except Exception as e:
-                print(f"An error occurred during chat: {e}")
+    try:
+        while True:
+            # --- Sesi Kirim Pesan ---
+            message_to_send = input("Masukkan pesan untuk dikirim (ketik 'exit' untuk keluar): ")
+            if message_to_send.lower() == "exit":
+                print("Menutup koneksi...")
+                break
+
+            padded_message = add_padding(message_to_send)
+            encrypted_hex_output = ""
+            for i in range(0, len(padded_message), 8):
+                block = padded_message[i:i+8]
+                encrypted_hex_output += cipher.encrypt_block(block)
+
+            conn.sendall(encrypted_hex_output.encode('utf-8'))
+            print(f"Mengirim data terenkripsi: {encrypted_hex_output}")
+
+            # --- Sesi Terima Balasan ---
+            encrypted_response = conn.recv(1024).decode('utf-8')
+            if not encrypted_response:
+                print("Client telah memutus koneksi.")
+                break
+
+            print(f"Menerima data terenkripsi: {encrypted_response}")
+
+            decrypted_response_padded = ""
+            for i in range(0, len(encrypted_response), 16):
+                hex_block = encrypted_response[i:i+16]
+                decrypted_response_padded += cipher.decrypt_block(hex_block)
+
+            final_response = remove_padding(decrypted_response_padded)
+            print(f"Hasil Dekripsi: {final_response}\n")
+
+    except Exception as e:
+        print(f"An error occurred during chat: {e}")
+
 
 # --- Jalankan Program ---
 if __name__ == "__main__":
